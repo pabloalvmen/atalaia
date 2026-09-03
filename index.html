@@ -617,7 +617,7 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
 <header class="hero" id="top">
   <div class="hero-bg">
     <img src="img/hero-foto.jpg" width="1600" height="738" fetchpriority="high" decoding="async" alt="Vista aérea de Atalaia Camper Park con el área llena, en Foz (Lugo)">
-    <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"><source src="img/hero-video.mp4" type="video/mp4"></video>
+    <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"></video>
   </div>
   <div class="hero-inner wrap">
     <span class="kicker reveal in" data-i18n="kicker">Área de autocaravanas · Foz · A Mariña Lucense</span>
@@ -1149,6 +1149,7 @@ copyBtn.addEventListener('click', () => {
 const hv = document.getElementById('heroVid');
 if (hv) {
   hv.muted = true;
+  hv.src = innerWidth < 800 ? 'img/hero-video-movil.mp4' : 'img/hero-video.mp4';
   const play = () => { if (hv.paused) hv.play().catch(() => {}); };
   play();
   hv.addEventListener('loadeddata', play);
