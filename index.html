@@ -234,7 +234,6 @@ body::after{
 .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-out both}
 @keyframes kenburns{from{transform:scale(1.14) translateY(-1.5%)}to{transform:scale(1)}}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-@media (max-width:700px),(prefers-reduced-motion:reduce){.hero-vid{display:none}}
 .hero::before{
   content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(180deg,rgba(10,46,66,.42) 0%,rgba(10,46,66,.06) 38%,rgba(13,42,58,.78) 100%);
@@ -1155,6 +1154,17 @@ if (hv) {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
   ['touchstart', 'click', 'scroll', 'keydown'].forEach(ev =>
     window.addEventListener(ev, play, { once: true, passive: true }));
+  const aAnimacion = () => {
+    if (!hv.paused || hv.dataset.swapped) return;
+    hv.dataset.swapped = '1';
+    const img = new Image();
+    img.src = 'img/hero-anim.webp';
+    img.className = 'hero-vid';
+    img.alt = '';
+    img.onload = () => hv.replaceWith(img);
+  };
+  setTimeout(aAnimacion, 1200);
+  setTimeout(aAnimacion, 3000);
 }
 
 /* ---------- año del footer ---------- */
