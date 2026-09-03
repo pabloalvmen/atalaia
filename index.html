@@ -625,7 +625,7 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
 <header class="hero" id="top">
   <div class="hero-bg">
     <img src="img/hero-foto.jpg" width="1600" height="738" fetchpriority="high" decoding="async" alt="Vista aérea de Atalaia Camper Park con el área llena, en Foz (Lugo)">
-    <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"></video>
+    <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" disablepictureinpicture disableremoteplayback x-webkit-airplay="deny" aria-hidden="true"></video>
   </div>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-inner wrap">
@@ -1158,7 +1158,7 @@ copyBtn.addEventListener('click', () => {
 const hv = document.getElementById('heroVid');
 if (hv) {
   hv.muted = true;
-  hv.src = innerWidth < 800 ? 'img/hero-video-movil.mp4' : 'img/hero-video.mp4';
+  hv.src = innerWidth < 800 ? 'img/hero-video-movil.mp4?v=4' : 'img/hero-video.mp4?v=4';
   hv.addEventListener('playing', () => hv.classList.add('on'), { once: true });
   const play = () => { if (hv.paused) hv.play().catch(() => {}); };
   play();
@@ -1171,13 +1171,21 @@ if (hv) {
     if (window.__noswap || !hv.paused || hv.dataset.swapped) return;
     hv.dataset.swapped = '1';
     const img = new Image();
-    img.src = 'img/hero-anim.webp';
+    img.src = 'img/hero-anim.webp?v=4';
     img.className = 'hero-vid on';
     img.alt = '';
     img.onload = () => hv.replaceWith(img);
   };
-  setTimeout(aAnimacion, 1200);
-  setTimeout(aAnimacion, 3000);
+  hv.addEventListener('pause', () => { if (!document.hidden && !hv.dataset.swapped) hv.play().catch(() => {}); });
+  let fallos = 0;
+  const vigia = setInterval(() => {
+    if (hv.dataset.swapped) { clearInterval(vigia); return; }
+    if (hv.paused) {
+      fallos++;
+      hv.play().catch(() => {});
+      if (fallos >= 2) { aAnimacion(); clearInterval(vigia); }
+    } else fallos = 0;
+  }, 1500);
 }
 
 /* ---------- año del footer ---------- */
