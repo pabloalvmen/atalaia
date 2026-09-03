@@ -233,10 +233,17 @@ body::after{
 .hero-bg{position:absolute;inset:0;z-index:-2}
 .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-out both}
 @keyframes kenburns{from{transform:scale(1.14) translateY(-1.5%)}to{transform:scale(1)}}
-.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.hero-vid.on{opacity:1}
 .hero::before{
   content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(10,46,66,.42) 0%,rgba(10,46,66,.06) 38%,rgba(13,42,58,.78) 100%);
+  background:
+    radial-gradient(130% 130% at 50% 38%, transparent 55%, rgba(9,34,50,.42) 100%),
+    linear-gradient(180deg,rgba(10,46,66,.52) 0%,rgba(11,44,62,.34) 42%,rgba(9,34,50,.86) 100%);
+}
+.hero-grain{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.11;mix-blend-mode:overlay;
+  background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/></filter><rect width="160" height="160" filter="url(%23g)" opacity="1"/></svg>');
 }
 .hero-inner{width:100%;padding:120px 24px 96px}
 .kicker{
@@ -264,8 +271,9 @@ body::after{
 .btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
 .hero-award{
   position:absolute;right:5%;bottom:110px;z-index:5;
-  background:var(--paper);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow);
-  transform:rotate(2.5deg);max-width:250px;border:1px solid var(--sand-line);
+  background:rgba(255,253,247,.78);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);
+  border-radius:16px;padding:16px 20px;box-shadow:0 18px 40px -18px rgba(9,34,50,.5);
+  transform:rotate(2.5deg);max-width:250px;border:1px solid rgba(255,255,255,.55);
 }
 .hero-award b{font-family:var(--f-display);font-weight:900;font-size:17px;display:block;line-height:1.2}
 .hero-award small{color:var(--ink-soft);font-size:13px}
@@ -619,6 +627,7 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
     <img src="img/hero-foto.jpg" width="1600" height="738" fetchpriority="high" decoding="async" alt="Vista aérea de Atalaia Camper Park con el área llena, en Foz (Lugo)">
     <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"></video>
   </div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-inner wrap">
     <span class="kicker reveal in" data-i18n="kicker">Área de autocaravanas · Foz · A Mariña Lucense</span>
     <h1 class="reveal in" style="--d:.12s" data-i18n="h1">Duerme con el <em>Cantábrico</em> a los pies.</h1>
@@ -1150,6 +1159,7 @@ const hv = document.getElementById('heroVid');
 if (hv) {
   hv.muted = true;
   hv.src = innerWidth < 800 ? 'img/hero-video-movil.mp4' : 'img/hero-video.mp4';
+  hv.addEventListener('playing', () => hv.classList.add('on'), { once: true });
   const play = () => { if (hv.paused) hv.play().catch(() => {}); };
   play();
   hv.addEventListener('loadeddata', play);
@@ -1162,7 +1172,7 @@ if (hv) {
     hv.dataset.swapped = '1';
     const img = new Image();
     img.src = 'img/hero-anim.webp';
-    img.className = 'hero-vid';
+    img.className = 'hero-vid on';
     img.alt = '';
     img.onload = () => hv.replaceWith(img);
   };
