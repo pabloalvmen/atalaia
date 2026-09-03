@@ -1157,7 +1157,7 @@ if (hv) {
   ['touchstart', 'click', 'scroll', 'keydown'].forEach(ev =>
     window.addEventListener(ev, play, { once: true, passive: true }));
   const aAnimacion = () => {
-    if (!hv.paused || hv.dataset.swapped) return;
+    if (window.__noswap || !hv.paused || hv.dataset.swapped) return;
     hv.dataset.swapped = '1';
     const img = new Image();
     img.src = 'img/hero-anim.webp';
