@@ -193,7 +193,7 @@ body::after{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:18px 0;transition:background .35s,box-shadow .35s,padding .35s;
 }
-.nav.solid{background:rgba(250,246,236,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--sand-line);padding:10px 0}
+.nav.solid{background:#faf6ec;box-shadow:0 1px 0 var(--sand-line);padding:10px 0}
 .nav .wrap{display:flex;align-items:center;gap:28px}
 .brand{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
 .brand svg{height:38px;width:auto}
@@ -215,7 +215,6 @@ body::after{
 .burger span{display:block;width:26px;height:3px;border-radius:2px;background:#fff;margin:5px 0;transition:transform .3s,opacity .3s,background .35s}
 .nav.solid .burger span{background:var(--ink)}
 @media (max-width:1050px){
-  .nav.solid{background:rgba(250,246,236,.98);backdrop-filter:none;-webkit-backdrop-filter:none}
   body.menu-open{overflow:hidden}
   body.menu-open .nav{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
   .nav-links{
@@ -304,7 +303,7 @@ section{position:relative}
 .sec-head{margin-bottom:56px;position:relative}
 .overline{color:var(--rust);font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:13px;display:inline-flex;align-items:center;gap:10px}
 .overline::before{content:"";width:30px;height:2px;background:var(--sun)}
-.sec-head h2{font-size:clamp(32px,4.6vw,54px);margin-top:12px;max-width:20ch}
+.sec-head h2{font-size:clamp(32px,4.6vw,54px);margin-top:12px;max-width:20ch;text-wrap:balance}
 .hand{font-family:var(--f-hand);font-weight:600;color:var(--sea);font-size:clamp(20px,2.4vw,27px);line-height:1.25}
 
 /* ---------- el área ---------- */
@@ -333,7 +332,7 @@ section{position:relative}
 .stat{background:var(--paper);padding:34px 20px;text-align:center;transition:background .3s}
 .stat:hover{background:#fff}
 .stat .num{font-family:var(--f-display);font-weight:900;font-size:clamp(36px,4.5vw,52px);color:var(--sea);line-height:1}
-.stat .num sub{font-size:.45em;font-weight:600;color:var(--rust);vertical-align:baseline}
+.stat .num .x{font-size:.5em;font-weight:600;color:var(--rust);vertical-align:.22em;margin:0 3px}
 .stat .lbl{margin-top:8px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 
 /* ---------- servicios ---------- */
@@ -363,11 +362,11 @@ section{position:relative}
 .gal-item figcaption{
   position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;color:#fff;
   font-family:var(--f-hand);font-size:22px;
-  background:linear-gradient(transparent,rgba(13,42,58,.72));
+  background:linear-gradient(180deg,transparent,rgba(13,42,58,.45) 40%,rgba(13,42,58,.92));
 }
 .g1{grid-column:span 7;aspect-ratio:16/10}
 .g2{grid-column:span 5;aspect-ratio:4/3.4}
-.g3{grid-column:span 5;aspect-ratio:4/3.1}
+.g3{grid-column:span 5;aspect-ratio:1.255}
 .g4{grid-column:span 7;aspect-ratio:16/9}
 @media (max-width:720px){.g1,.g2,.g3,.g4{grid-column:span 12;aspect-ratio:16/10}}
 dialog.lightbox{border:0;background:rgba(20,14,9,.92);max-width:100vw;max-height:100vh;width:100vw;height:100vh;display:grid;place-items:center;padding:4vmin}
@@ -388,7 +387,7 @@ dialog.lightbox::backdrop{background:transparent}
 .precio.alta{background:rgba(232,181,66,.13)}
 .precio .temp{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#9fc6d8}
 .precio.alta .temp{color:var(--sun)}
-.precio .eur{font-family:var(--f-display);font-weight:900;font-size:clamp(52px,6vw,72px);line-height:1;color:#fff;margin:10px 0 2px}
+.precio .eur{font-family:var(--f-display);font-weight:900;font-size:clamp(52px,6vw,72px);line-height:1;color:#fff;margin:10px 0 2px;white-space:nowrap}
 .precio .eur small{font-size:.35em;font-weight:600;color:#9fc6d8}
 .precio .elec{margin-top:8px;font-size:13.5px;font-weight:700;color:#9fc6d8}
 .incluye{margin-top:34px}
@@ -408,7 +407,7 @@ dialog.lightbox::backdrop{background:transparent}
   background:rgba(232,181,66,.09);border-radius:14px;padding:16px 18px;
 }
 .temporada b{color:#fff}
-.nota-tarifa{margin-top:16px;font-size:13.5px;color:#8fb4c5}
+.nota-tarifa{margin-top:16px;font-size:13.5px;color:#a9c9d9}
 
 /* ---------- entorno ---------- */
 .ruta{position:relative;margin:70px 0 54px}
@@ -459,8 +458,6 @@ dialog.lightbox::backdrop{background:transparent}
   transition:transform .3s;
 }
 .quote:hover{transform:translateY(-4px)}
-.quote:nth-child(2){transform:rotate(.6deg)}
-.quote:nth-child(2):hover{transform:rotate(.6deg) translateY(-4px)}
 .quote::before{
   content:"“";position:absolute;top:-14px;left:20px;font-family:var(--f-display);font-weight:900;
   font-size:74px;line-height:1;color:var(--sun);
@@ -586,8 +583,13 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
 /* ---------- ajustes móvil ---------- */
 @media (max-width:700px){
   .sec{padding:72px 0}
-  .precio{padding:26px 20px}
-  .precio .eur{font-size:44px}
+  .precio{padding:24px 16px}
+  .precio .eur{font-size:36px}
+  .precio .elec{font-size:12px}
+  .scroll-hint{display:none}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{justify-content:center}
+  footer.site{padding-bottom:100px}
   .sec-head{margin-bottom:40px}
   .kicker::before{display:none}
   .stats{margin-top:64px}
@@ -686,7 +688,7 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
     <div class="stats">
       <div class="stat reveal"><div class="num" data-count="77">0</div><div class="lbl" data-i18n="stat.l1">parcelas con agua y luz</div></div>
       <div class="stat reveal" style="--d:.1s"><div class="num" data-count="28">0</div><div class="lbl" data-i18n="stat.l2">con desagüe en parcela</div></div>
-      <div class="stat reveal" style="--d:.2s"><div class="num">12<sub>×</sub>7,5</div><div class="lbl" data-i18n="stat.l3">metros por parcela</div></div>
+      <div class="stat reveal" style="--d:.2s"><div class="num">12<span class="x">×</span>7,5</div><div class="lbl" data-i18n="stat.l3">metros por parcela</div></div>
       <div class="stat reveal" style="--d:.3s"><div class="num" data-count="500">0</div><div class="lbl" data-i18n="stat.l4">metros hasta la playa</div></div>
     </div>
   </div>
@@ -712,7 +714,7 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
       </div>
       <div class="svc reveal" style="--d:.12s">
         <svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h3"/><path d="M9 3c2.5 0 3.5 2 3.5 4.5"/><path d="M12.5 10.5v.01M15 13v.01M10 13v.01M12.5 15.5v.01M15 18v.01M10 18v.01"/></svg>
-        <h3 data-i18n="svc3.t">Duchas de agua caliente</h3><p data-i18n="svc3.d">Baños y duchas impecables. Ducha caliente: 1 € / 6 min.</p>
+        <h3 data-i18n="svc3.t">Duchas de agua caliente</h3><p data-i18n="svc3.d">Baños y duchas impecables. Ducha caliente: 1 €/6 min.</p>
       </div>
       <div class="svc reveal" style="--d:.18s">
         <span class="free" data-i18n="free">Gratis</span>
@@ -901,12 +903,12 @@ footer.site{background:var(--sea-ink);color:#9dbfd0;padding:56px 0 34px;font-siz
         <div><b>park4night</b><small data-i18n="b1.s">sobre 5 · más de 880 opiniones</small></div>
       </div>
       <div class="badge reveal" style="--d:.08s">
-        <span class="score">🏆</span>
+        <span class="score"><svg viewBox="0 0 24 24" style="width:30px;height:30px;stroke:var(--sea);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.5c0 2.6 1.1 4 2.7 4.2M16 5.5h2.5c0 2.6-1.1 4-2.7 4.2"/><path d="M12 13v3M9.5 19c.3-2 1.1-3 2.5-3s2.2 1 2.5 3M8 19.5h8"/></svg></span>
         <div><b data-i18n="b2.b">Mejor área de España 2021</b><small data-i18n="b2.s">votada por los usuarios de Campercontact</small></div>
       </div>
       <div class="badge reveal" style="--d:.16s">
         <span class="score">★</span>
-        <div><b data-i18n="b3.b">Recomendada</b><small data-i18n="b3.s">en las principales guías de áreas: areasAC, Áreas Camper…</small></div>
+        <div><b data-i18n="b3.b">Recomendada</b><small data-i18n="b3.s">en las principales guías de áreas: areasAC, Áreas Camper y más</small></div>
       </div>
     </div>
     <div class="quotes">
@@ -1219,7 +1221,7 @@ es: {
  "ov.serv":"Servicios","h2.serv":"Todo lo que tu casa rodante necesita","hand.serv":"…y unas cuantas cosas que no esperabas ↓",free:"Gratis",
  "svc1.t":"Electricidad en parcela","svc1.d":"Toma propia en las 77 parcelas del área.",
  "svc2.t":"Agua y vaciado","svc2.d":"Agua potable, aguas grises y negras y WC químico. Dos zonas de servicio.",
- "svc3.t":"Duchas de agua caliente","svc3.d":"Baños y duchas impecables. Ducha caliente: 1 € / 6 min.",
+ "svc3.t":"Duchas de agua caliente","svc3.d":"Baños y duchas impecables. Ducha caliente: 1 €/6 min.",
  "svc4.t":"Wifi en todo el recinto","svc4.d":"Conexión gratuita para planear la siguiente etapa… o no planearla.",
  "svc5.t":"Cafetería-bar","svc5.d":"Desayunos, cañas y tapas sin salir del área, con terraza y zona chill-out.",
  "svc6.t":"Lavandería","svc6.d":"Lavadora y secadora (4 € cada una) y plancha a tu disposición.",
@@ -1245,7 +1247,7 @@ es: {
  "ent1.t":"Ría de Foz y O Cargadoiro","ent1.d":"Paseos al borde del mar, marisqueo, aves y uno de los miradores más bonitos de A Mariña, todo a tiro de bici desde el área.",
  "ent2.t":"Parada del Camino del Norte","ent2.d":"Foz es etapa natural de la ruta costera hacia Santiago: muchos peregrinos y cicloturistas hacen noche en Atalaia.",
  "ov.op":"Opiniones","h2.op":"Lo cuentan mejor los que aparcan aquí",
- "b1.s":"sobre 5 · más de 880 opiniones","b2.b":"Mejor área de España 2021","b2.s":"votada por los usuarios de Campercontact","b3.b":"Recomendada","b3.s":"en las principales guías de áreas: areasAC, Áreas Camper…",
+ "b1.s":"sobre 5 · más de 880 opiniones","b2.b":"Mejor área de España 2021","b2.s":"votada por los usuarios de Campercontact","b3.b":"Recomendada","b3.s":"en las principales guías de áreas: areasAC, Áreas Camper y más",
  "op.fuente":'Opiniones reales publicadas en <a href="https://park4night.com/es/place/52394" target="_blank" rel="noopener">park4night</a>. Gracias por cada una de ellas.',
  "ov.faq":"Dudas frecuentes","h2.faq":"Lo que todo el mundo pregunta","hand.faq":"así no tienes que esperar a que cojamos el teléfono",
  "f1.q":"¿Cuánto cuesta la noche?","f1.a":"15 € en temporada baja, con electricidad incluida. En temporada alta, 17 € sin electricidad o 20 € con ella. Siempre con parcela de 12 × 7,5 m, vehículo, 2 adultos, 1 niño, mascota, llenado y vaciado de aguas, wifi, TV y bicis.",
@@ -1285,7 +1287,7 @@ gl: {
  "ov.serv":"Servizos","h2.serv":"Todo o que a túa casa rodante precisa","hand.serv":"…e unhas cantas cousas que non agardabas ↓",free:"De balde",
  "svc1.t":"Electricidade na parcela","svc1.d":"Toma propia nas 77 parcelas da área.",
  "svc2.t":"Auga e baleirado","svc2.d":"Auga potable, augas grises e negras e WC químico. Dúas zonas de servizo.",
- "svc3.t":"Duchas de auga quente","svc3.d":"Baños e duchas impecables. Ducha quente: 1 € / 6 min.",
+ "svc3.t":"Duchas de auga quente","svc3.d":"Baños e duchas impecables. Ducha quente: 1 €/6 min.",
  "svc4.t":"Wifi en todo o recinto","svc4.d":"Conexión de balde para planear a seguinte etapa… ou non planeala.",
  "svc5.t":"Cafetería-bar","svc5.d":"Almorzos, cañas e tapas sen saír da área, con terraza e zona chill-out.",
  "svc6.t":"Lavandería","svc6.d":"Lavadora e secadora (4 € cada unha) e ferro de pasar á túa disposición.",
@@ -1311,7 +1313,7 @@ gl: {
  "ent1.t":"Ría de Foz e O Cargadoiro","ent1.d":"Paseos á beira do mar, marisqueo, aves e un dos miradoiros máis fermosos da Mariña, todo a tiro de bici desde a área.",
  "ent2.t":"Parada do Camiño do Norte","ent2.d":"Foz é etapa natural da ruta costeira cara a Santiago: moitos peregrinos e cicloturistas fan noite en Atalaia.",
  "ov.op":"Opinións","h2.op":"Cóntano mellor os que aparcan aquí",
- "b1.s":"sobre 5 · máis de 880 opinións","b2.b":"Mellor área de España 2021","b2.s":"votada polos usuarios de Campercontact","b3.b":"Recomendada","b3.s":"nas principais guías de áreas: areasAC, Áreas Camper…",
+ "b1.s":"sobre 5 · máis de 880 opinións","b2.b":"Mellor área de España 2021","b2.s":"votada polos usuarios de Campercontact","b3.b":"Recomendada","b3.s":"nas principais guías de áreas: areasAC, Áreas Camper e máis",
  "op.fuente":'Opinións reais publicadas en <a href="https://park4night.com/es/place/52394" target="_blank" rel="noopener">park4night</a>. Grazas por cada unha delas.',
  "ov.faq":"Dúbidas frecuentes","h2.faq":"O que todo o mundo pregunta","hand.faq":"así non tes que agardar a que collamos o teléfono",
  "f1.q":"Canto custa a noite?","f1.a":"15 € en tempada baixa, con electricidade incluída. En tempada alta, 17 € sen electricidade ou 20 € con ela. Sempre con parcela de 12 × 7,5 m, vehículo, 2 adultos, 1 neno, mascota, enchido e baleirado de augas, wifi, TV e bicis.",
@@ -1351,7 +1353,7 @@ en: {
  "ov.serv":"Facilities","h2.serv":"Everything your home on wheels needs","hand.serv":"…plus a few things you weren't expecting ↓",free:"Free",
  "svc1.t":"Power at every pitch","svc1.d":"Own socket on all 77 pitches.",
  "svc2.t":"Water & waste","svc2.d":"Drinking water, grey and black water and cassette toilet. Two service points.",
- "svc3.t":"Hot showers","svc3.d":"Spotless toilets and showers. Hot shower: €1 / 6 min.",
+ "svc3.t":"Hot showers","svc3.d":"Spotless toilets and showers. Hot shower: €1/6 min.",
  "svc4.t":"Wifi across the park","svc4.d":"Free connection to plan your next leg… or not plan it at all.",
  "svc5.t":"Café-bar","svc5.d":"Breakfast, beers and tapas without leaving the park, terrace and chill-out lawn included.",
  "svc6.t":"Laundry","svc6.d":"Washer and dryer (€4 each) and an iron at your disposal.",
@@ -1377,7 +1379,7 @@ en: {
  "ent1.t":"Foz estuary & O Cargadoiro","ent1.d":"Seaside walks, shellfishing, birdlife and one of A Mariña's loveliest viewpoints, all within cycling distance.",
  "ent2.t":"A stop on the Camino del Norte","ent2.d":"Foz is a natural stage on the coastal route to Santiago: many pilgrims and cycle tourists spend the night at Atalaia.",
  "ov.op":"Reviews","h2.op":"Best told by the people who park here",
- "b1.s":"out of 5 · 880+ reviews","b2.b":"Best area in Spain 2021","b2.s":"voted by Campercontact users","b3.b":"Recommended","b3.s":"in the main area guides: areasAC, Áreas Camper…",
+ "b1.s":"out of 5 · 880+ reviews","b2.b":"Best area in Spain 2021","b2.s":"voted by Campercontact users","b3.b":"Recommended","b3.s":"in the main area guides: areasAC, Áreas Camper and more",
  "op.fuente":'Real reviews published on <a href="https://park4night.com/en/place/52394" target="_blank" rel="noopener">park4night</a>, in their original language. Thank you for every one of them.',
  "ov.faq":"FAQ","h2.faq":"What everyone asks","hand.faq":"so you don't have to wait for us to pick up the phone",
  "f1.q":"How much is a night?","f1.a":"€15 in low season, electricity included. In high season, €17 without electricity or €20 with it. Always includes a 12 × 7.5 m pitch, vehicle, 2 adults, 1 child, pet, water fill and drain, wifi, TV and bikes.",
@@ -1417,7 +1419,7 @@ fr: {
  "ov.serv":"Services","h2.serv":"Tout ce qu'il faut à votre maison roulante","hand.serv":"…et quelques extras inattendus ↓",free:"Gratuit",
  "svc1.t":"Électricité à l'emplacement","svc1.d":"Prise individuelle sur les 77 emplacements.",
  "svc2.t":"Eau et vidange","svc2.d":"Eau potable, eaux grises et noires et WC chimique. Deux zones de service.",
- "svc3.t":"Douches chaudes","svc3.d":"Sanitaires impeccables. Douche chaude : 1 € / 6 min.",
+ "svc3.t":"Douches chaudes","svc3.d":"Sanitaires impeccables. Douche chaude : 1 €/6 min.",
  "svc4.t":"Wifi sur toute l'aire","svc4.d":"Connexion gratuite pour préparer la prochaine étape… ou pas.",
  "svc5.t":"Café-bar","svc5.d":"Petit-déj, bières et tapas sans quitter l'aire, avec terrasse et coin détente.",
  "svc6.t":"Laverie","svc6.d":"Lave-linge et sèche-linge (4 € chacun) et fer à repasser à disposition.",
@@ -1443,7 +1445,7 @@ fr: {
  "ent1.t":"Ria de Foz et O Cargadoiro","ent1.d":"Balades en bord de mer, pêche à pied, oiseaux et l'un des plus beaux belvédères d'A Mariña, le tout à vélo depuis l'aire.",
  "ent2.t":"Étape du Camino del Norte","ent2.d":"Foz est une étape naturelle de la route côtière vers Saint-Jacques : pèlerins et cyclotouristes font halte à Atalaia.",
  "ov.op":"Avis","h2.op":"Ceux qui stationnent ici en parlent mieux que nous",
- "b1.s":"sur 5 · plus de 880 avis","b2.b":"Meilleure aire d'Espagne 2021","b2.s":"élue par les utilisateurs de Campercontact","b3.b":"Recommandée","b3.s":"dans les principaux guides d'aires : areasAC, Áreas Camper…",
+ "b1.s":"sur 5 · plus de 880 avis","b2.b":"Meilleure aire d'Espagne 2021","b2.s":"élue par les utilisateurs de Campercontact","b3.b":"Recommandée","b3.s":"dans les principaux guides d'aires : areasAC, Áreas Camper et plus",
  "op.fuente":'Avis réels publiés sur <a href="https://park4night.com/fr/place/52394" target="_blank" rel="noopener">park4night</a>, dans leur langue d\'origine. Merci pour chacun d\'eux.',
  "ov.faq":"Questions fréquentes","h2.faq":"Ce que tout le monde demande","hand.faq":"comme ça, pas besoin d'attendre qu'on décroche",
  "f1.q":"Combien coûte la nuit ?","f1.a":"15 € en basse saison, électricité incluse. En haute saison, 17 € sans électricité ou 20 € avec. Toujours avec emplacement de 12 × 7,5 m, véhicule, 2 adultes, 1 enfant, animal, remplissage et vidange, wifi, TV et vélos.",
@@ -1483,7 +1485,7 @@ de: {
  "ov.serv":"Ausstattung","h2.serv":"Alles, was Ihr rollendes Zuhause braucht","hand.serv":"…und ein paar Dinge, die Sie nicht erwarten ↓",free:"Gratis",
  "svc1.t":"Strom an der Parzelle","svc1.d":"Eigener Anschluss auf allen 77 Parzellen.",
  "svc2.t":"Wasser & Entsorgung","svc2.d":"Trinkwasser, Grau- und Schwarzwasser, Kassetten-WC. Zwei Servicestationen.",
- "svc3.t":"Warme Duschen","svc3.d":"Tadellose Sanitäranlagen. Warmdusche: 1 € / 6 Min.",
+ "svc3.t":"Warme Duschen","svc3.d":"Tadellose Sanitäranlagen. Warmdusche: 1 €/6 Min.",
  "svc4.t":"WLAN am ganzen Platz","svc4.d":"Gratis-Verbindung, um die nächste Etappe zu planen … oder eben nicht.",
  "svc5.t":"Café-Bar","svc5.d":"Frühstück, Bier und Tapas direkt am Platz, mit Terrasse und Chill-out-Bereich.",
  "svc6.t":"Waschküche","svc6.d":"Waschmaschine und Trockner (je 4 €), Bügeleisen vorhanden.",
@@ -1509,7 +1511,7 @@ de: {
  "ent1.t":"Ría de Foz & O Cargadoiro","ent1.d":"Uferwege, Muschelsammler, Vögel und einer der schönsten Aussichtspunkte der Mariña – alles per Rad erreichbar.",
  "ent2.t":"Etappe am Camino del Norte","ent2.d":"Foz ist eine natürliche Etappe der Küstenroute nach Santiago – viele Pilger und Radreisende übernachten in Atalaia.",
  "ov.op":"Bewertungen","h2.op":"Am besten erzählen es die, die hier parken",
- "b1.s":"von 5 · über 880 Bewertungen","b2.b":"Bester Platz Spaniens 2021","b2.s":"gewählt von Campercontact-Nutzern","b3.b":"Empfohlen","b3.s":"in den großen Stellplatzführern: areasAC, Áreas Camper …",
+ "b1.s":"von 5 · über 880 Bewertungen","b2.b":"Bester Platz Spaniens 2021","b2.s":"gewählt von Campercontact-Nutzern","b3.b":"Empfohlen","b3.s":"in den großen Stellplatzführern: areasAC, Áreas Camper und mehr",
  "op.fuente":'Echte Bewertungen von <a href="https://park4night.com/de/place/52394" target="_blank" rel="noopener">park4night</a>, in Originalsprache. Danke für jede einzelne.',
  "ov.faq":"Häufige Fragen","h2.faq":"Was alle fragen","hand.faq":"damit Sie nicht warten müssen, bis wir ans Telefon gehen",
  "f1.q":"Was kostet die Nacht?","f1.a":"15 € in der Nebensaison, Strom inklusive. In der Hauptsaison 17 € ohne Strom oder 20 € mit. Immer inklusive Parzelle 12 × 7,5 m, Fahrzeug, 2 Erwachsene, 1 Kind, Haustier, Frisch- und Abwasser, WLAN, TV und Fahrräder.",
@@ -1549,7 +1551,7 @@ pt: {
  "ov.serv":"Serviços","h2.serv":"Tudo o que a sua casa sobre rodas precisa","hand.serv":"…e umas quantas coisas que não esperava ↓",free:"Grátis",
  "svc1.t":"Eletricidade no lugar","svc1.d":"Tomada própria nos 77 lugares.",
  "svc2.t":"Água e despejo","svc2.d":"Água potável, águas cinzentas e negras e WC químico. Duas zonas de serviço.",
- "svc3.t":"Duches de água quente","svc3.d":"Casas de banho impecáveis. Duche quente: 1 € / 6 min.",
+ "svc3.t":"Duches de água quente","svc3.d":"Casas de banho impecáveis. Duche quente: 1 €/6 min.",
  "svc4.t":"Wifi em todo o recinto","svc4.d":"Ligação grátis para planear a próxima etapa… ou não a planear.",
  "svc5.t":"Café-bar","svc5.d":"Pequenos-almoços, cervejas e tapas sem sair da área, com esplanada e zona chill-out.",
  "svc6.t":"Lavandaria","svc6.d":"Máquina de lavar e secar (4 € cada) e ferro à disposição.",
@@ -1575,7 +1577,7 @@ pt: {
  "ent1.t":"Ria de Foz e O Cargadoiro","ent1.d":"Passeios à beira-mar, marisqueio, aves e um dos miradouros mais bonitos da Mariña, tudo à distância de uma bicicletada.",
  "ent2.t":"Paragem do Caminho do Norte","ent2.d":"Foz é etapa natural da rota costeira para Santiago: muitos peregrinos e cicloturistas pernoitam no Atalaia.",
  "ov.op":"Opiniões","h2.op":"Quem estaciona aqui conta melhor",
- "b1.s":"em 5 · mais de 880 opiniões","b2.b":"Melhor área de Espanha 2021","b2.s":"votada pelos utilizadores do Campercontact","b3.b":"Recomendada","b3.s":"nos principais guias de áreas: areasAC, Áreas Camper…",
+ "b1.s":"em 5 · mais de 880 opiniões","b2.b":"Melhor área de Espanha 2021","b2.s":"votada pelos utilizadores do Campercontact","b3.b":"Recomendada","b3.s":"nos principais guias de áreas: areasAC, Áreas Camper e mais",
  "op.fuente":'Opiniões reais publicadas no <a href="https://park4night.com/pt/place/52394" target="_blank" rel="noopener">park4night</a>, no idioma original. Obrigado por cada uma delas.',
  "ov.faq":"Dúvidas frequentes","h2.faq":"O que toda a gente pergunta","hand.faq":"assim não tem de esperar que atendamos o telefone",
  "f1.q":"Quanto custa a noite?","f1.a":"15 € na época baixa, com eletricidade incluída. Na época alta, 17 € sem eletricidade ou 20 € com ela. Sempre com lugar de 12 × 7,5 m, veículo, 2 adultos, 1 criança, animal, enchimento e despejo de águas, wifi, TV e bicicletas.",
